@@ -109,12 +109,12 @@ c_s=3100 #shear wave speed
 [] 
 
  [BCs]
-    [left]
-        type = DirichletBC
-        variable = 'disp_x'
-        boundary = 'left'
-        value=0
-    []
+    # [left]
+    #     type = DirichletBC
+    #     variable = 'disp_x'
+    #     boundary = 'left'
+    #     value=0
+    # []
     [right_x]
         type = CoupledVarNeumannBC
         variable = disp_x
