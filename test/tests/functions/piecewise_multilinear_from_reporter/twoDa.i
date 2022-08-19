@@ -25,6 +25,7 @@
   [../]
 []
 
+
 [AuxVariables]
   [./bilinear1_var]
   [../]
@@ -38,35 +39,40 @@
   [../]
 []
 
-[Reporters]
-  [gridData]
-    type = GriddedDataReporter
-    data_file = 'twoD1.txt'
-    outputs = none
-  []
-  [exception]
-    type = ConstantReporter
-    real_vector_names = tooManyParams
-    real_vector_values = '1 2 3 4 5 6 7 8 9 10'
-  []
-[]
 
 [Functions]
 # This is just f = 1 + 2x + 3y
-  [bilinear1_fcn]
+  [./bilinear1_fcn]
     type = PiecewiseMultilinearFromReporter
-    values_name = 'gridData/parameter'
-    grid_name = 'gridData/grid'
-    axes_name = 'gridData/axes'
-    step_name = 'gridData/step'
-    dim_name = 'gridData/dim'
-  []
-  [bilinear1_answer]
-    type = ParsedFunction
-    value = 1+2*x+3*y
-  []
+  value_name = 'OptParam/u'
+  x_coord_name = 'Optotherdata/x'
+  y_coord_name = 'Optotherdata/y'
+  z_coord_name = 'Optotherdata/z'
+  time_name = 'Optotherdata/t'
 []
 
+  [./bilinear1_answer]
+    type = ParsedFunction
+    value = 1+2*x+3*y
+  [../]
+[]
+[Reporters]
+  [OptParam]
+  type = optimizationreporter
+  real_vector_names = 'x y z t u'
+  real_vector_values = '-1.0 0.0 2.0; -1.0 2.0 3.0; 0; 0; -4.0 -2.0 2.0 5.0 7.0 11.0 8.0 10.0 14.0'
+  []
+  [reporterData1]
+  type = ConstantReporter
+  real_vector_names = 'x y z t u'
+  real_vector_values = '-1.0 0.0 2.0; -1.0 2.0 3.0; 0; 0; -4.0 -2.0 2.0 5.0 7.0 11.0 8.0 10.0 14.0'
+  []
+  [reporterData1]
+  type = ConstantReporter
+  real_vector_names = 'x y z t u'
+  real_vector_values = '-1.0 0.0 2.0; -1.0 2.0 3.0; 0; 0; -4.0 -2.0 2.0 5.0 7.0 11.0 8.0 10.0 14.0'
+  []
+[]
 [Postprocessors]
   [./bilinear1_pp]
     type = NodalL2Error
@@ -86,5 +92,4 @@
   file_base = twoDa
   hide = dummy
   csv = true
-  exodus=true
 []
