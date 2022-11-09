@@ -68,7 +68,6 @@
   # #----- END: VPP for synthetic data simulations
 []
 
-
 [Kernels]
   [diff]
     type = Diffusion
@@ -104,7 +103,7 @@
 [Executioner]
   type = Steady
   solve_type = NEWTON
-  line_search=none
+  line_search = none
   petsc_options_iname = '-pc_type'
   petsc_options_value = 'lu'
 []

@@ -57,7 +57,7 @@
                       measured_data/simulation_values
                       measured_data/measurement_values
                       measured_data/measurement_time'
-    to_reporters   = 'OptimizationReporter/misfit_values
+    to_reporters = 'OptimizationReporter/misfit_values
                       OptimizationReporter/simulation_values
                       OptimizationReporter/measurement_values
                       OptimizationReporter/measurement_time'
@@ -90,7 +90,7 @@
                       measured_data/simulation_values
                       measured_data/measurement_values
                       measured_data/measurement_time'
-    to_reporters   = 'OptimizationReporter/misfit_values
+    to_reporters = 'OptimizationReporter/misfit_values
                       OptimizationReporter/simulation_values
                       OptimizationReporter/measurement_values
                       OptimizationReporter/measurement_time'

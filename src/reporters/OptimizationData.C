@@ -45,6 +45,8 @@ OptimizationData::validParams()
   return params;
 }
 
+//ABDO: we need to supply multiple vector of measurements representing the real and imag part of the measurement at each FREQUENCY
+// and do the same for the simulation values
 OptimizationData::OptimizationData(const InputParameters & parameters)
   : GeneralReporter(parameters),
     _measurement_xcoord(

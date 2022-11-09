@@ -11,8 +11,8 @@
 [Executioner]
   type = Optimize
   # tao_solver = taolmvm
-  # petsc_options_iname='-tao_gatol'
-  # petsc_options_value='1e-3'
+  # petsc_options_iname = '-tao_gatol'
+  # petsc_options_value = '1e-5'
 
   tao_solver = taonls
   petsc_options_iname = '-tao_gttol -tao_nls_pc_type -tao_nls_ksp_type'
@@ -53,7 +53,7 @@
                       measured_data/simulation_values
                       measured_data/measurement_values
                       measured_data/measurement_time'
-    to_reporters   = 'OptimizationReporter/misfit_values
+    to_reporters = 'OptimizationReporter/misfit_values
                       OptimizationReporter/simulation_values
                       OptimizationReporter/measurement_values
                       OptimizationReporter/measurement_time'
@@ -86,7 +86,7 @@
                       measured_data/simulation_values
                       measured_data/measurement_values
                       measured_data/measurement_time'
-    to_reporters   = 'OptimizationReporter/misfit_values
+    to_reporters = 'OptimizationReporter/misfit_values
                       OptimizationReporter/simulation_values
                       OptimizationReporter/measurement_values
                       OptimizationReporter/measurement_time'
@@ -95,5 +95,5 @@
 []
 
 [Outputs]
-  csv=true
+  csv = true
 []

@@ -77,6 +77,8 @@ protected:
   /// Bounds of the parameters
   const std::vector<Real> & _lower_bounds;
   const std::vector<Real> & _upper_bounds;
+  std::vector<Real> & _ic_values;
+  // std::vector<Real> & _initial_condition; //this holds the initial condition supplied by reporter/file
 
   /**
    * Function to compute objective.
@@ -95,4 +97,5 @@ private:
   friend class OptimizationReporterTest;
 
   void setSimuilationValuesForTesting(std::vector<Real> & data);
+  void readICFromFile();
 };

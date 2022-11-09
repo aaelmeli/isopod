@@ -1,0 +1,154 @@
+Framework Information:
+MOOSE Version:           git commit 12ea396d90 on 2022-09-26
+LibMesh Version:         
+PETSc Version:           3.16.6
+SLEPc Version:           3.16.2
+Current Time:            Tue Oct 25 16:31:34 2022
+Executable Timestamp:    Mon Oct 24 18:13:15 2022
+
+Parallelism:
+  Num Processors:          1
+  Num Threads:             1
+
+Mesh: 
+  Parallel Type:           replicated
+  Mesh Dimension:          2
+  Spatial Dimension:       2
+  Nodes:                   81
+  Elems:                   64
+  Num Subdomains:          1
+
+Auxiliary System:
+  Num DOFs:                81
+  Num Local DOFs:          81
+  Variables:               "temperature_forward" 
+  Finite Element Types:    "LAGRANGE" 
+  Approximation Orders:    "FIRST" 
+
+Execution Information:
+  Executioner:             Optimize
+  Solver Mode:             Preconditioned JFNK
+
+[32m Solve Skipped![39m
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=0	f=0.0378511	gnorm=0.0175941	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=1	f=0.0155421	gnorm=0.00908105	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=2	f=0.00352165	gnorm=0.00356403	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=3	f=0.000626874	gnorm=0.00090387	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=4	f=0.000372846	gnorm=0.000365682	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=5	f=0.00029238	gnorm=0.000357409	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=6	f=6.9329e-05	gnorm=0.000262013	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=7	f=2.81841e-05	gnorm=9.91841e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=8	f=2.06325e-05	gnorm=6.13356e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=9	f=9.45445e-06	gnorm=3.28381e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=10	f=8.41179e-06	gnorm=5.35149e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=11	f=6.81976e-06	gnorm=1.93842e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=12	f=6.09712e-06	gnorm=1.64094e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=13	f=2.32266e-06	gnorm=4.05613e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=14	f=1.26128e-06	gnorm=2.04388e-05	cnorm=0	xdiff=1
+[32mSubapp forward0 solve converged![39m
+[32m Solve Skipped![39m
+[32mSubapp adjoint0 solve converged![39m
+[32m Solve Skipped![39m
+TAO SOLVER: iteration=15	f=1.87546e-07	gnorm=8.52931e-06	cnorm=0	xdiff=1
+Tao Object: 1 MPI processes
+  type: blmvm
+  Gradient steps: 0
+  Mat Object: (tao_blmvm_) 1 MPI processes
+    type: lmvmbfgs
+    rows=64, cols=64
+      Scale type: DIAGONAL
+      Scale history: 1
+      Scale params: alpha=1., beta=0.5, rho=1.
+      Convex factors: phi=0., theta=0.125
+      Max. storage: 5
+      Used storage: 5
+      Number of updates: 14
+      Number of rejects: 0
+      Number of resets: 1
+      Mat Object: (J0_) 1 MPI processes
+        type: lmvmdiagbroyden
+        rows=64, cols=64
+          Scale history: 1
+          Scale params: alpha=1., beta=0.5, rho=1.
+          Convex factor: theta=0.125
+          Max. storage: 1
+          Used storage: 1
+          Number of updates: 14
+          Number of rejects: 0
+          Number of resets: 1
+  TaoLineSearch Object: 1 MPI processes
+    type: more-thuente
+    maximum function evaluations=30
+    tolerances: ftol=0.0001, rtol=1e-10, gtol=0.9
+    total number of function evaluations=0
+    total number of gradient evaluations=0
+    total number of function/gradient evaluations=1
+    using variable bounds
+    Termination reason: 1
+  Active Set subset type: subvec
+  convergence tolerances: gatol=1e-05,   steptol=0.,   gttol=0.
+  Residual in Function/Gradient:=8.52931e-06
+  Objective value=1.87546e-07
+  total number of iterations=15,                          (max: 2000)
+  total number of function/gradient evaluations=16,      (max: 4000)
+  Solution converged:    ||g(X)|| <= gatol

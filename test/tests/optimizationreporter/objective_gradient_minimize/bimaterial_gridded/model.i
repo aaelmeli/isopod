@@ -7,25 +7,12 @@
   [gmg]
     type = GeneratedMeshGenerator
     dim = 2
-    nx = 16
-    ny = 16
+    nx = 8
+    ny = 8
     xmin = -4
     xmax = 4
     ymin = -4
     ymax = 4
-  []
-  [bimaterial]
-    type = SubdomainBoundingBoxGenerator
-    input = gmg
-    block_id = 1
-    bottom_left = '-100 -100 -100'
-    top_right = '100 0 100'
-  []
-  [name_blocks]
-    type = RenameBlockGenerator
-    input = bimaterial
-    old_block = '0 1'
-    new_block = 'top bottom'
   []
 []
 
@@ -40,13 +27,21 @@
     diffusivity = diffusivity
     variable = temperature
   []
-  [heat_source]
-    type = ADMatHeatSource
-    material_property = volumetric_heat
-    variable = temperature
-  []
+  # [heat_source]
+  #   type = ADMatHeatSource
+  #   material_property = volumetric_heat
+  #   variable = temperature
+  # []
 []
 
+[DiracKernels]
+  [point_heat_source]
+    type = ConstantPointSource
+    point = '2 2 0'
+    variable = temperature
+    value = 10
+  []
+[]
 [AuxVariables]
   [grad_Tx]
     order = CONSTANT
@@ -57,6 +52,10 @@
     family = MONOMIAL
   []
   [grad_Tz]
+    order = CONSTANT
+    family = MONOMIAL
+  []
+  [diffusivity_values]
     order = CONSTANT
     family = MONOMIAL
   []
@@ -81,6 +80,12 @@
     variable = grad_Tz
     gradient_variable = temperature
   []
+  [diffusivity_values_auxkernel]
+    type = FunctionAux
+    function = diffusivity_values
+    variable = diffusivity_values
+    execute_on = initial
+  []
 []
 
 [BCs]
@@ -90,66 +95,40 @@
     boundary = bottom
     value = 0
   []
+  [top]
+    type = DirichletBC
+    variable = temperature
+    boundary = top
+    value = 0
+  []
 []
 
 [Functions]
-  [diffusivity_top_function]
-    type = ParsedFunction
-    value = alpha
-    vars = alpha
-    vals = d_top
-  []
-  [diffusivity_bottom_function]
-    type = ParsedFunction
-    value = alpha
-    vars = alpha
-    vals = d_bot
+  [diffusivity_values]
+    type = PiecewiseMulticonstantFromReporter
+    direction = 'left left'
+    values_name = 'gridData/parameter'
+    grid_name = 'gridData/grid'
+    axes_name = 'gridData/axes'
+    step_name = 'gridData/step'
+    dim_name = 'gridData/dim'
   []
 []
 
 [Materials]
-  [mat_top]
+  [mat_diff]
     type = GenericFunctionMaterial
-    block = 'top'
     prop_names = diffusivity
-    prop_values = diffusivity_top_function
+    prop_values = diffusivity_values
   []
-  [mat_bottom]
-    type = GenericFunctionMaterial
-    block = 'bottom'
-    prop_names = diffusivity
-    prop_values = diffusivity_bottom_function
-  []
-  [volumetric_heat]
-    type = ADGenericFunctionMaterial
-    prop_names = 'volumetric_heat'
-    prop_values = 100
-  []
-[]
-
-[Postprocessors]
-  [d_bot]
-    type = VectorPostprocessorComponent
-    index = 0
-    vectorpostprocessor = vector_pp
-    vector_name = diffusivity_values
-    execute_on = 'linear'
-  []
-  [d_top]
-    type = VectorPostprocessorComponent
-    index = 1
-    vectorpostprocessor = vector_pp
-    vector_name = diffusivity_values
-    execute_on = 'linear'
-  []
+  # [volumetric_heat]
+  #   type = ADGenericFunctionMaterial
+  #   prop_names = 'volumetric_heat'
+  #   prop_values = 100
+  # []
 []
 
 [VectorPostprocessors]
-  [vector_pp]
-    type = ConstantVectorPostprocessor
-    vector_names = diffusivity_values
-    value = '5 10' #we need to set initial values (any values)- these will be over-written
-  []
   [data_pt]
     type = VppPointValueSampler
     variable = temperature
@@ -158,17 +137,42 @@
   # [synthetic_data]
   #   type = LineValueSampler
   #   variable = 'temperature'
-  #   start_point = '0 -3.99 0'
-  #   end_point = '0 3.99 0'
-  #   num_points = 11
+  #   start_point = '0 -4 0'
+  #   end_point = '0 4 0'
+  #   num_points = 9
+  #   sort_by = id
+  # []
+  # [synthetic_data]
+  #   type = NodalValueSampler
+  #   variable = 'temperature'
   #   sort_by = id
   # []
 []
 
+# [Reporters]
+#   [measure_data]
+#     type = OptimizationData
+#     execute_on = timestep_end
+#   []
+# []
+
 [Reporters]
   [measure_data]
     type = OptimizationData
-    execute_on = timestep_begin
+    measurement_file = synthetic_data.csv
+    file_xcoord = x
+    file_ycoord = y
+    file_zcoord = z
+    file_value = temperature
+    variable = temperature
+    execute_on = timestep_end
+    outputs = none
+  []
+  [gridData]
+    type = GriddedDataReporter
+    data_file = 'gridded_material_params_const.txt'
+    # execute_on = ALWAYS
+    # outputs = none
   []
 []
 
@@ -184,5 +188,7 @@
 
 [Outputs]
   file_base = 'forward'
-  console = true
+  console = false
+  # csv = true
+  # exodus = true
 []

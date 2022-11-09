@@ -369,7 +369,7 @@ OptimizeSolve::applyHessian(libMesh::PetscVector<Number> & s, libMesh::PetscVect
 
   _form_function->computeGradient(Hs);
   _hess_iterate++;
-  return 0;
+  return 0; //why it is always return 0, there should be some check before doing this, otherwise it will be always returning 0
 }
 
 PetscErrorCode
